@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ngCordova'])
+angular.module('TheGazApp', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform, $cordovaGeolocation, $cordovaStatusbar, $cordovaVibration) {
   $ionicPlatform.ready(function() {
@@ -43,33 +43,34 @@ angular.module('starter', ['ionic', 'ngCordova'])
     console.log('run complete');
   });
 })
-.controller('MyController', function($scope, $ionicPopover) {
+.controller('LoginController', function($scope) {
+  $scope.f = {};
+  $scope.submitForm = function() {
+    if ($scope.theForm.$invalid) return;
+    console.log('submit', $scope.f);
+  };
 
-  // .fromTemplateUrl() method
-  $ionicPopover.fromTemplateUrl('my-popover.html', {
+})
+.controller('RootController', function($scope, $ionicModal) {
+  $ionicModal.fromTemplateUrl('htmls/login.html', {
     scope: $scope,
-  }).then(function(popover) {
-    $scope.popover = popover;
+    animation: 'slide-in-up',
+    backdropClickToClose: false
+  }).then(function(modal) {
+    $scope.modal = modal;
+    $scope.modal.show();
   });
-
-
-  $scope.openPopover = function($event) {
-    alert('open');
-    $scope.popover.show($event);
+  $scope.openModal = function() {
+    $scope.modal.show();
   };
-  $scope.closePopover = function() {
-    $scope.popover.hide();
+  $scope.closeModal = function() {
+    $scope.modal.hide();
   };
-  //Cleanup the popover when we're done with it!
   $scope.$on('$destroy', function() {
-    $scope.popover.remove();
+    $scope.modal.remove();
   });
-  // Execute action on hide popover
-  $scope.$on('popover.hidden', function() {
-    // Execute action
+  $scope.$on('modal.hidden', function() {
   });
-  // Execute action on remove popover
-  $scope.$on('popover.removed', function() {
-    // Execute action
+  $scope.$on('modal.removed', function() {
   });
 });
