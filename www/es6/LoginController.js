@@ -18,4 +18,5 @@ class LoginController {
 
 
 }
+LoginController.$inject = ['$scope', 'RestService'];
 export { LoginController }
