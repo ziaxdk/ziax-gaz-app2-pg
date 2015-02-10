@@ -2,6 +2,7 @@
 "use strict";
 
 function Config($stateProvider, $urlRouterProvider) {
+  alert('config');
   $stateProvider.state("login", {
     url: "/login",
     templateUrl: "htmls/login-view.html",
