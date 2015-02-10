@@ -1,4 +1,4 @@
-angular.module('TheGazApp', [
+angular.module('thegazapp', [
   'ionic'])
 
 .run(['$ionicPlatform', function($ionicPlatform) {
