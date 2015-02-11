@@ -5,11 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaGeolocation, $cordovaStatusbar, $cordovaVibration) {
-  alert('run');
+.run(function($ionicPlatform, $rootScope, $cordovaGeolocation, $cordovaStatusbar, $cordovaVibration) {
   $ionicPlatform.ready(function() {
-    alert('ready');
-
 
     var watchOptions = {
       frequency : 1000,
@@ -24,9 +21,9 @@ angular.module('starter', ['ionic', 'ngCordova'])
         // error
       },
       function(position) {
-//        var lat  = position.coords.latitude;
-  //      var long = position.coords.longitude;
-    //    alert (lat + ', ' + long);
+        var lat  = position.coords.latitude;
+        var lng = position.coords.longitude;
+        $rootScope.pos = { lat: lat, lng: lng };
     });
 
 
