@@ -1,8 +1,7 @@
-angular.module('thegazapp', [
-  'ionic'])
+angular.module('thegazapp', ['ionic'])
 
 .run(['$ionicPlatform', function($ionicPlatform) {
-  alert('ready');
+  alert('run');
 
   $ionicPlatform.ready(function() {
     alert('ready');
